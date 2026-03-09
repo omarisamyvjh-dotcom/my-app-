@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>مساعد الطعون والشكاوى</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f0f0f0;
+text-align:center;
+}
+
+.container{
+background:white;
+width:350px;
+margin:auto;
+margin-top:50px;
+padding:20px;
+border-radius:10px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+button{
+width:90%;
+padding:10px;
+margin:8px;
+background:#007BFF;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+input,textarea{
+width:90%;
+padding:10px;
+margin:8px;
+}
+
+.page{
+display:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div id="home">
+
+<h2>⚖️ مساعد الطعون والشكاوى</h2>
+
+<button onclick="showPage('appeal')">كتابة طعن إداري</button>
+
+<button onclick="showPage('complaint')">كتابة شكوى</button>
+
+<button onclick="showPage('legal')">معلومات قانونية</button>
+
+</div>
+
+
+<div id="appeal" class="page">
+
+<h3>كتابة طعن إداري</h3>
+
+<input id="appealName" placeholder="الاسم">
+
+<textarea id="appealProblem" placeholder="المشكلة"></textarea>
+
+<input id="appealAdmin" placeholder="الإدارة المعنية">
+
+<button onclick="sendAppeal()">إرسال الطعن</button>
+
+<button onclick="showHome()">رجوع</button>
+
+</div>
+
+
+<div id="complaint" class="page">
+
+<h3>كتابة شكوى</h3>
+
+<input id="compName" placeholder="الاسم">
+
+<input id="compType" placeholder="نوع المشكلة">
+
+<input id="compTo" placeholder="الجهة الموجهة إليها الشكوى">
+
+<button onclick="sendComplaint()">إرسال الشكوى</button>
+
+<button onclick="showHome()">رجوع</button>
+
+</div>
+
+
+<div id="legal" class="page">
+
+<h3>معلومات قانونية</h3>
+
+<p>نصائح قانونية:</p>
+
+<p>
+قبل تقديم أي طعن إداري يجب كتابة المشكلة بوضوح
+وجمع كل الوثائق المهمة.
+</p>
+
+<p>خطوات تقديم الطعن:</p>
+
+<ul>
+<li>كتابة الطعن بوضوح</li>
+<li>ذكر الإدارة المعنية</li>
+<li>إرفاق الوثائق</li>
+<li>إرسال الطلب للإدارة</li>
+</ul>
+
+<button onclick="showHome()">رجوع</button>
+
+</div>
+
+</div>
+
+<script>
+
+function showPage(page){
+
+document.getElementById("home").style.display="none";
+document.getElementById("appeal").style.display="none";
+document.getElementById("complaint").style.display="none";
+document.getElementById("legal").style.display="none";
+
+document.getElementById(page).style.display="block";
+
+}
+
+function showHome(){
+
+document.getElementById("appeal").style.display="none";
+document.getElementById("complaint").style.display="none";
+document.getElementById("legal").style.display="none";
+
+document.getElementById("home").style.display="block";
+
+}
+
+function sendAppeal(){
+
+let name=document.getElementById("appealName").value;
+let problem=document.getElementById("appealProblem").value;
+let admin=document.getElementById("appealAdmin").value;
+
+let subject="طعن إداري";
+let body="الاسم: "+name+"%0D%0Aالمشكلة: "+problem+"%0D%0Aالإدارة: "+admin;
+
+window.location.href="mailto:omarisamyvjh@gmail.com?subject="+subject+"&body="+body;
+
+}
+
+function sendComplaint(){
+
+let name=document.getElementById("compName").value;
+let type=document.getElementById("compType").value;
+let to=document.getElementById("compTo").value;
+
+let subject="شكوى";
+let body="الاسم: "+name+"%0D%0Aنوع المشكلة: "+type+"%0D%0Aالجهة: "+to;
+
+window.location.href="mailto:omarisamyvjh@gmail.com?subject="+subject+"&body="+body;
+
+}
+
+</script>
+
+</body>
+</html>
